@@ -1,12 +1,16 @@
-alert('Hello world');
-
-let name='favoriteFood';
-document.write(name);
-let food1='pizza';
-document.write(food1);
-let food2 ='hamburger';
-document.write(food2);
-let food3='pasta';
-document.write(food3);
-
-
+let name='pokemonList';
+let pikachu={
+    name:'Pikachu',
+    heigh:3,
+    color:'yellow'
+};
+let snorlax={
+    name:'Snorlax',
+    heigh:9,
+    color:'blue'
+};
+let charizard={
+    name:'Charizard',
+    heigh:12,
+    color:'orange'
+};
