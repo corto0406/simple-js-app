@@ -1,17 +1,17 @@
 let pokemonList = [
     {
         name: 'Pikachu',
-        heigh: 3,
+        height: 3,
         color: 'yellow'
     },
     {
         name: 'Snorlax',
-        heigh: 9,
+        height: 9,
         color: 'blue'
     },
     {
         name: 'Charizard',
-        heigh: 12,
+        height: 12,
         color: 'orange'
     }
 
