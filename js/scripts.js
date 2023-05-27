@@ -27,7 +27,7 @@ for (let i = 0; i < pokemonList.length; i++) {
         console.log(pokemonList[i].name + " (height:12)-Wow,that's big!")
     }
 };
-//check why this loop don't work with tutor! 
+//implementation equality in for loop
 for (let i = 0; i < pokemonList.length; i++) {
     if (pokemonList[i].color === 'orange') {
         console.log(pokemonList[i].name + ' has pretty look');
@@ -39,17 +39,68 @@ for (let i = 0; i < pokemonList.length; i++) {
 };
 
 for (let i = 0; i < pokemonList.length; i++) {
-    document.write ('<p class=pokemon>' + pokemonList[i].name + '-' + pokemonList[i].height + "<br>" + "</p>")
+    document.write('<p class=pokemon>' + pokemonList[i].name + '-' + pokemonList[i].height + "<br>" + "</p>")
 }
 
 
-
-pokemonList.forEach(function(pokemon) {
-    document.write ( '<p class=pokemon1>' + pokemon.name + ' ' + 'is' + ' ' + pokemon.color + ' ' + "color" +'<br>'+'</p>');
+pokemonList.forEach(function (pokemon) {
+    document.write('<p class=pokemon1>' + pokemon.name + ' ' + 'is' + ' ' + pokemon.color + ' ' + "color" + '<br>' + '</p>');
 });
 
 
-pokemonList.forEach(function(pokemon) {
-    console.log ( pokemon.name + ' ' + 'is' +' ' + pokemon.height +' ' + 'm')
+pokemonList.forEach(function (pokemon) {
+    console.log(pokemon.name + ' ' + 'is' + ' ' + pokemon.height + ' ' + 'm')
 
 });
+
+let pokemonRepository = (function () {
+
+    let pokemonList = [
+        {
+            name: 'Pikachu',
+            height: 3,
+            color: 'yellow'
+        },
+        {
+            name: 'Snorlax',
+            height: 9,
+            color: 'blue'
+        },
+        {
+            name: 'Charizard',
+            height: 12,
+            color: 'orange'
+        }
+
+    ]
+
+    function getAll() {
+        return pokemonList;
+    }
+
+
+    function add (name) {
+        pokemonList.push (name);
+    }
+    function add (color) {
+        pokemonList.push (color);
+    }
+ 
+    
+    
+    
+    return {
+        getAll: getAll,
+        add: add
+    }
+
+})()
+
+console.log(pokemonRepository.getAll())
+
+console.log(pokemonRepository.add({name:'Snorlax'}))
+console.log(pokemonRepository.add({color:'Snorlax is blue'}))
+
+
+
+
