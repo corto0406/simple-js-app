@@ -3,3 +3,11 @@
      font-size: x-large;
      text-align: center;
 }
+
+
+.pokemon1 {
+    color:darkgreen;
+    font-size:larger;
+    text-align: left;
+    padding: 0 20%;
+}
