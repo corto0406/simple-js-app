@@ -6,8 +6,42 @@
 
 
 .pokemon1 {
-    color:darkgreen;
+    color:#103210ae;
     font-size:larger;
     text-align: left;
     padding: 0 20%;
+}
+
+
+.button-class {
+
+    background-color: aquamarine;
+    color: azure;
+    padding: 16px 32px;
+    text-align: center;
+    display: inline;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s;
+    cursor: pointer;
+    background-color: black;
+    border: 2px solid green;
+    
+
+}
+
+
+.click{
+    background-color: black;
+    border: 2px solid green;
+    padding: 16px 32px;
+    text-align: center;
+    display: inline;
+    font-size: 16px;
+    margin: 4px 2px;
+    
+
+
+
+
 }

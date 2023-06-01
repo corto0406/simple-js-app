@@ -38,20 +38,7 @@ for (let i = 0; i < pokemonList.length; i++) {
     }
 };
 
-for (let i = 0; i < pokemonList.length; i++) {
-    document.write('<p class=pokemon>' + pokemonList[i].name + '-' + pokemonList[i].height + "<br>" + "</p>")
-}
 
-
-pokemonList.forEach(function (pokemon) {
-    document.write('<p class=pokemon1>' + pokemon.name + ' ' + 'is' + ' ' + pokemon.color + ' ' + "color" + '<br>' + '</p>');
-});
-
-
-pokemonList.forEach(function (pokemon) {
-    console.log(pokemon.name + ' ' + 'is' + ' ' + pokemon.height + ' ' + 'm')
-
-});
 
 let pokemonRepository = (function () {
 
@@ -77,29 +64,54 @@ let pokemonRepository = (function () {
     function getAll() {
         return pokemonList;
     }
-
-
-    function add (name) {
-        pokemonList.push (name);
+    function add(name) {
+        pokemonList.push(name);
     }
-    function add (color) {
-        pokemonList.push (color);
+    function add(color) {
+        pokemonList.push(color);
     }
- 
+    function addListItem(pokemon) {
+        let pokemonList = document.querySelector('.pokemon-list');
+        let listpokemon = document.createElement('li');
+        let button = document.createElement('button');
+        button.innerText = pokemon.name;
+        button.classList.add('button-class');
+        listpokemon.appendChild(button);
+        pokemonList.appendChild(listpokemon);
+        let click = document.querySelector('.click');
+    }
     
-    
-    
+      function addEventListener(pokemon) {
+       console.log(pokemon);
+      }
+
+    function showDetails(pokemon) {
+        console.log(pokemon);
+
+    }
     return {
         getAll: getAll,
-        add: add
+        add: add,
+        addListItem: addListItem,
+        showDetails: showDetails,
+        addEventListener: addEventListener
     }
 
 })()
 
 console.log(pokemonRepository.getAll())
 
-console.log(pokemonRepository.add({name:'Snorlax'}))
-console.log(pokemonRepository.add({color:'Snorlax is blue'}))
+console.log(pokemonRepository.add({ name: 'Snorlax' }))
+console.log(pokemonRepository.add({ color: 'Snorlax is blue' }))
+
+
+pokemonRepository.getAll().forEach(function (pokemon) {
+
+    pokemonRepository.addListItem(pokemon);
+
+
+});
+
 
 
 
