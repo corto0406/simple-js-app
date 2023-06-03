@@ -78,32 +78,25 @@ let pokemonRepository = (function () {
         button.classList.add('button-class');
         listpokemon.appendChild(button);
         pokemonList.appendChild(listpokemon);
-        let click = document.querySelector('.click');
-    }
-    
-      function addEventListener(pokemon) {
-       console.log(pokemon);
-      }
-
-    function showDetails(pokemon) {
-        console.log(pokemon);
 
     }
+
+
+
     return {
+
+
         getAll: getAll,
         add: add,
-        addListItem: addListItem,
-        showDetails: showDetails,
-        addEventListener: addEventListener
+        addListItem: addListItem
+
+
     }
+
 
 })()
 
 console.log(pokemonRepository.getAll())
-
-console.log(pokemonRepository.add({ name: 'Snorlax' }))
-console.log(pokemonRepository.add({ color: 'Snorlax is blue' }))
-
 
 pokemonRepository.getAll().forEach(function (pokemon) {
 
