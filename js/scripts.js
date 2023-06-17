@@ -1,30 +1,32 @@
 let pokemonRepository = (function () {
     let pokemonList = [];
-    let pokeApiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=150";
+    let pokeApiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=80";
     function addPokemon(pokemon) {
         if (typeof pokemon === "object") {
             pokemonList.push(pokemon);
         }
     }
     function addListItem(pokemon) {
-        let pokemonList = document.querySelector(".list-group");
-        let pokemonListItem = document.createElement("li");
-        let btn = document.createElement("button");
+        let pokemonList = document.querySelector(".list-group");//add class for element
+        let pokemonListItem = document.createElement("li");//add new element
+        let btn = document.createElement("button");//add new element
         pokemonListItem.classList.add("list-group-item", "text-center", "border-0");
         btn.setAttribute("data-toggle", "modal");
         btn.setAttribute("data-target", "#exampleModal");
         btn.classList.add("btn-secondary", "mt-1", "p-2", "border-0", "fs-5");
         btn.addEventListener("click", function () {
             showDetails(pokemon);
-        });
+        });//make button alive
         btn.innerText = pokemon.name;
         pokemonListItem.appendChild(btn);
         pokemonList.appendChild(pokemonListItem);
     }
+
     function getAll() {
         return pokemonList;
     }
     showLoadingMessage();
+    //main function is to apply content from apiUrl
     function loadList() {
         return fetch(pokeApiUrl).then(response => {
             return response.json();
@@ -44,6 +46,7 @@ let pokemonRepository = (function () {
             console.error(e);
         });
     }
+    //main function is to show us details for each pokemon 
     function loadDetails(pokemon) {
         let detailUrl = pokemon.detailsUrl;
         return fetch(detailUrl).then(response => {
@@ -63,7 +66,6 @@ let pokemonRepository = (function () {
             let listBtn = pokemon.querySelector(".btn-secondary").innerText.toLowerCase();
             if (listBtn.includes(searchInput)) {
                 pokemon.style.display = "inline-block";
-
             } else {
                 pokemon.style.display = "none";
             }
@@ -72,6 +74,7 @@ let pokemonRepository = (function () {
 
     let searchInput = document.querySelector("#input");
     searchInput.addEventListener("input", () => searchItem());
+    //submit all objects for each pokemon
     function showDetails(pokemon) {
         loadDetails(pokemon).then(() => {
             showModal(pokemon.name, pokemon.height, pokemon.imageUrl, pokemon.weight);
@@ -79,24 +82,27 @@ let pokemonRepository = (function () {
         }).catch(() => {
         });
     }
+
     function showLoadingMessage() {
         let loadingDiv = document.createElement("div");
         loadingDiv.classList.add("spinner-border", "text-light");
         let pokemonUL = document.querySelector("ul");
         pokemonUL.appendChild(loadingDiv);
     }
+
     function hideLoadingMessage() {
         let pokemonUL = document.querySelector("ul");
         pokemonUL.firstChild.remove();
     }
+    //show them in correct form
     function showModal(pokemonName, pokemonHeight, pokemonImage, pokemonWeight) {
         let title = document.querySelector(".modal-title");
         title.innerText = pokemonName.toUpperCase();
         let height = document.querySelector(".pokemonHeight");
         let imgDetails = document.querySelector(".PokomoneImg");
         let weight = document.querySelector(".pokemonWeight");
-        weight.innerText = "Weight: " + pokemonWeight + " M";
-        height.innerText = "Height: " + pokemonHeight + " KG";
+        weight.innerText = "Weight: " + pokemonWeight + " kg";
+        height.innerText = "Height: " + pokemonHeight + " m";
         imgDetails.src = pokemonImage;
     }
     window.addEventListener("keydown", e => {
@@ -118,6 +124,7 @@ let pokemonRepository = (function () {
             hideModal();
         }
     });
+
     function hideModal() {
         let modalContainer = document.querySelector("#exampleModal");
         modalContainer.classList.remove("isVisible");
@@ -138,10 +145,3 @@ pokemonRepository.loadList().then(() => {
         pokemonRepository.addListItem(pokemon);
     });
 });
-
-
-
-
-
-
-
