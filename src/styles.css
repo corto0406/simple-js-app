@@ -13,7 +13,7 @@ body, .list-group-item{
 
 .form-control::placeholder {
 text-align: center;
-background-color: gold;
+background-color: antiquewhite;
 }
 
 @media (min-width: 570px) {
